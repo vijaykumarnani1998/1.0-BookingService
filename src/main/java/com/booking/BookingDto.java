@@ -24,7 +24,7 @@ public class BookingDto {
     private UUID bookingId;
     @NotBlank(message="User Id should not be Empty and atleast contain one non-whitespace character")
     private String userId;
-    @NotNull(message="Movie Id should be  Integer Value only")		  
+    @NotNull(message="Movie Id should be not be empty ")		  
     private  Integer movieId;
     @NotNull(message="ShowDate is Mandatory")
     private LocalDate showDate;
