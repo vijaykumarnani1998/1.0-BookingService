@@ -8,6 +8,8 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import jakarta.validation.Valid;
+
 @RestController
 @RequestMapping("/bookings")
 public class BookingController {
@@ -16,10 +18,10 @@ public class BookingController {
     private BookingService service;
 
     @PostMapping("/create")
-    public ResponseEntity<BookingDto>  createBooking(@RequestBody BookingDto bookingDto)
+    public ResponseEntity<BookingDto>  createBooking(@Valid @RequestBody BookingDto bookingDto)
     {
-
-        return  new ResponseEntity<BookingDto>(service.saveBooking(bookingDto), HttpStatus.CREATED);
+    	BookingDto bookingDto1 = service.saveBooking(bookingDto);
+        return  new ResponseEntity<BookingDto>(bookingDto1, HttpStatus.CREATED);
     }
 
 }
