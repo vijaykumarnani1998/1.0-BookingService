@@ -1,6 +1,7 @@
 package com.booking;
 
-import java.util.HashMap;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Map;
 
 import org.springframework.http.HttpStatus;
@@ -14,19 +15,19 @@ import org.springframework.web.bind.annotation.RestControllerAdvice;
 public class GlobalExceptionHandler {
 	
 	@ExceptionHandler(MethodArgumentNotValidException.class)
-	public  ResponseEntity<Map<String, String>> handleValidations(MethodArgumentNotValidException exception)
+	public  ResponseEntity<List<String>> handleValidations(MethodArgumentNotValidException exception)
 	{
-		Map<String,String> map= new HashMap<>();
+		List<String> errorList= new ArrayList<>();
 		 exception.getBindingResult().getAllErrors().forEach(error->{
 			 
-			 String fieldName=((FieldError)error).getField();
+			 
 			 String message=error.getDefaultMessage();
-			 map.put(fieldName,message);
+			errorList.add(message);
 			 
 			 
 		 });
          
-	     return new  ResponseEntity<Map<String,String>>(map,HttpStatus.BAD_GATEWAY);
+	     return new  ResponseEntity<List<String>>(errorList,HttpStatus.BAD_GATEWAY);
 		
 	}
 
