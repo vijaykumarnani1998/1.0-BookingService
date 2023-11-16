@@ -1,4 +1,4 @@
-package com.booking;
+package com.booking.exception.handler;
 
 import java.time.LocalDateTime;
 import java.util.ArrayList;
@@ -9,6 +9,8 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.MethodArgumentNotValidException;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.RestControllerAdvice;
+
+import com.booking.dto.ErrorMessageDto;
 
 @RestControllerAdvice
 public class GlobalExceptionHandler {

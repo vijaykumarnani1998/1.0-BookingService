@@ -1,8 +1,10 @@
-package com.booking;
+package com.booking.repository;
+
+import java.util.UUID;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 
-import java.util.UUID;
+import com.booking.entity.BookingEntity;
 
 public interface BookingRepository extends JpaRepository<BookingEntity, UUID> {
 }

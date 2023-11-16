@@ -1,4 +1,4 @@
-package com.booking;
+package com.booking.entity;
 
 public enum BookingStatus {
 

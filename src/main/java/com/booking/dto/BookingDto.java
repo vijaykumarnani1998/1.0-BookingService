@@ -1,4 +1,4 @@
-package com.booking;
+package com.booking.dto;
 
 import java.time.LocalDate;
 import java.time.LocalTime;
@@ -7,6 +7,9 @@ import java.util.UUID;
 
 import org.springframework.validation.annotation.Validated;
 
+import com.booking.entity.BookingStatus;
+
+import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Positive;
@@ -18,7 +21,7 @@ import lombok.NoArgsConstructor;
 @Builder
 @AllArgsConstructor
 @NoArgsConstructor
-@Validated
+@Validated     //optional
 public class BookingDto {
 
     private UUID bookingId;
@@ -36,4 +39,7 @@ public class BookingDto {
     @NotNull(message="You have to select atleast one seat")
     private List<String> seatsBooked;
     private BookingStatus bookingStatus;
+    @NotNull(message="Email Should not be EMpty")
+    @Email(message="Email Format is Invalid")
+    private String email;
 }
